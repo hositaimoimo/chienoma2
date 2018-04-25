@@ -1,0 +1,233 @@
+header {
+	height: 50px;
+	text-align: center;
+	background-color: #FFBF7F;
+}
+header a {
+	line-height: 50px;
+	color: #60392d;
+	font-size: 20px;
+	font-family: "HGP創英角ゴシックUB", "HiraKakuPro-W6", "ヒラギノ角ゴ Pro W6";
+}
+.container {
+  max-width: 600px;
+}
+footer {
+	background-color: #d9eeda;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.footer_list {
+	list-style-type: none;
+}
+.footer_list li{
+	margin: 0 5px 0 5px;
+	display: inline-block;
+}
+
+.panel_main {
+	margin-top: 20px;
+	margin-bottom: 50px;
+}
+.panel_sub {
+	border-color: #A5DF00;
+}
+.panel-title {
+	word-break: break-all;
+}
+.center {
+	text-align: center;
+}
+.word_wrap {
+	word-wrap: break-word;
+}
+.btn {
+	border-radius: 7px;
+	background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.05));
+	box-shadow: inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+/* top */
+.jump-btn{
+	width: 100%;
+}
+.jump-buttons{
+	margin-bottom: 40px;
+	margin-top: 40px;
+}
+.mascot{
+	text-align: center;
+}
+.mascot img {
+	max-width: 70%;
+	max-height: 70%;
+	width: auto;
+	height: auto;
+}
+.twicon {
+	color: #00aced;
+}
+
+/* bosyu */
+.input_area {
+	width: 100%;
+	margin-bottom: 10px;
+}
+.input_area_link {
+	width: 80%;
+	margin-bottom: 10px;
+}
+.preview {
+	border: dashed 1px;
+	margin: 10px 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.preview img,
+.sakuhin_image img {
+	width:auto;
+	height:auto;
+	max-width:100%;
+	max-height:100%;
+}
+.image_button_frame label {
+	border-radius: 12px;
+	border: solid 1px;
+	padding: 0px 8px;
+}
+.comment_button input,
+.regist_button input {
+	width: 80%;
+}
+.bosyu_menu{
+	margin-top: 25px;
+	background-color: #FBF2EF;
+	border-left: solid 5px #F5BCA9;
+	padding-left: 5px;
+}
+.pad0 {
+	padding: 0;
+}
+/* kansou_list */
+ul.kansou_list {
+	padding: 0;
+	list-style-type: none;
+}
+.kansou_li {
+	margin-bottom: 20px;
+}
+.kansou_li p {
+	background-color: #F8FBEF;
+	border-radius: 5px;
+	padding: 5px;
+	margin-bottom: 3px;
+}
+.kansou_li small {
+	padding-left: 10px;
+}
+
+/* sakuhin */
+.sa_content {
+	margin-top: 5px;
+}
+
+/* sakuhin_list */
+ul.sakuhin_list {
+	padding: 0;
+	list-style-type: none;
+}
+.sa_creator {
+	border-bottom: dashed 1px #d4d4d4;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+}
+.sakuhin_li {
+	position: relative;
+	margin-bottom: 40px;
+}
+.sakuhin_li a{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top:0;
+	left: 0;
+	text-indent: 100%; /*テキスト非表示*/
+	white-space: nowrap; /*テキスト非表示*/
+	overflow: hidden; /*テキスト非表示*/
+}
+.sakuhin_li a:hover{
+	opacity:0.6;
+	filter: alpha(opacity=60);
+	-ms-filter: "alpha( opacity=60 )";
+	background: #fff;
+}
+.sakuhin-body {
+	background-color: #F8FBEF;
+}
+.sakuhin-body img {
+	margin-bottom: 10px;
+}
+.regist_button {
+	line-height: 40px;
+}
+#more_btn {
+	background-color: #F1F8E0;
+	line-height: 40px;
+}
+
+/* icon */
+.icons {
+	text-align: right;
+}
+.icons button {
+	padding: 1px 3px;
+	margin: 0 10px;
+}
+
+/* ad */
+.ad {
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+/* sweet alert */
+.sa-success {
+	display: none !important;
+}
+.sweet-alert .sa-icon {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	width: 40px;
+	height: 40px;
+}
+.sweet-alert h2 {
+	font-size: 20px;
+	margin: 10px 0;
+}
+.sweet-alert p {
+	font-size: 14px;
+}
+.sweet-alert button {
+	margin: 10px 5px 0 5px;
+}
+.sweet-alert .sa-icon.sa-warning .sa-dot {
+	bottom: 27px;
+}
+.sweet-alert .sa-icon.sa-warning .sa-body {
+	height: 20px;
+	top: 15px;
+}
+/***************/
+/* twitter */
+.twitter {
+	background-color: #00aced !important;
+	color: #fff !important;
+	width: 100%;
+	border-radius: 10px;
+}
+.twi_btn {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+/***********/
