@@ -59,11 +59,11 @@ if($notice_sakuhin['sa_twi_id'] != "" && $notice_sakuhin['notice'] == 1){
   $connection = new TwitterOAuth($consumer_key,$consumer_secret,$oauth_access_token,$oauth_access_token_secret);
 
   $m1 = mb_strimlen($notice_sakuhin['sa_title'], 0, 50, "...");
-  $m2 = mb_strimlen($ka_comment, 0, 50, "...");
+  $m2 = strip_tags(mb_strimlen($ka_comment, 0, 50, "..."));
   if($ka_hidden == 1) {
-    $message = '@'.$notice_sakuhin['sa_twi_id'].' 『'.$m1."』に意見が届いています！\n―――※募集主のみ閲覧可"."\n".SITE_URL.'/'.$request_url;
+    $message = '@'.$notice_sakuhin['sa_twi_id'].' 『'.$m1."』に意見が届いています！\n―※募集主のみ閲覧可"."\n".SITE_URL.'/'.$request_url;
   } else {
-    $message = '@'.$notice_sakuhin['sa_twi_id'].' 『'.$m1."』に意見が届いています！\n――― ".$m2."\n".SITE_URL.'/'.$request_url;
+    $message = '@'.$notice_sakuhin['sa_twi_id'].' 『'.$m1."』に意見が届いています！\n― ".$m2."\n".SITE_URL.'/'.$request_url;
   }
 
   $result = $connection->post(

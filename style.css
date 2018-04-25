@@ -126,6 +126,23 @@ ul.kansou_list {
 .kansou_li small {
 	padding-left: 10px;
 }
+.arrow {
+	position: absolute;
+	width: 5%;
+	height: 100%;
+	top: 0;
+	right: 0;
+	background-color: rgba(0,100,100,0.1);
+	vertical-align: middle;
+	display: table;
+}
+.arrow p {
+	vertical-align: middle;
+	display: table-cell;
+	text-align: center;
+	margin: 0;
+	color: #3d8b40;
+}
 
 /* sakuhin */
 .sa_content {

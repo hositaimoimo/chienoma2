@@ -206,9 +206,13 @@ if($is_owner){
         ?>
           <li class="kansou_li" id="kansou<?php echo $row['ka_id']; ?>">
             <div class="ka_comment word_wrap">
-              <?php if($row['ka_hidden'] == 1 && $user_id != $row['user_id']) { ?>
-                <p>※募集主のみ閲覧可</p>
-              <?php }else{ ?>
+              <?php if($row['ka_hidden'] == 1) {
+                if($is_owner || $user_id == $row['user_id']){ ?>
+                  <p><?php echo mb_ereg_replace('(https?://[-_.!~*\'()a-zA-Z0-9;/?:@&=+$,%#]+)', '<a href="\1" target="_blank">\1</a>', $row['ka_comment']); ?></p>
+                <?php }else{ ?>
+                  <p>※募集主のみ閲覧可</p>
+                <?php }
+              }else{ ?>
                 <p><?php echo mb_ereg_replace('(https?://[-_.!~*\'()a-zA-Z0-9;/?:@&=+$,%#]+)', '<a href="\1" target="_blank">\1</a>', $row['ka_comment']); ?></p>
               <?php } ?>
             </div>

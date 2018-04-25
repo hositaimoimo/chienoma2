@@ -105,6 +105,9 @@ if($user_id == $sakuhin['user_id'] && $_SESSION['bosyu_finish'] != NULL){
                   </div>
                 </div>
               </div>
+              <div class="arrow">
+                <p><i class="fa fa-chevron-right" aria-hidden="true"></i></p>
+              </div>
               <a class="sakuhin_link" href="<?php echo SITE_URL.'/sakuhin/s'.$row['sa_id'] ?>"></a>
             </li>
           <?php } ?>
@@ -155,6 +158,9 @@ if($user_id == $sakuhin['user_id'] && $_SESSION['bosyu_finish'] != NULL){
                   </div>
                 </div>
               </div>
+              <div class="arrow">
+                <p><i class="fa fa-chevron-right" aria-hidden="true"></i></p>
+              </div>
               <a class="sakuhin_link" href="<?php echo SITE_URL.'/sakuhin/s'.$row['sa_id'] ?>"></a>
             </li>
           <?php } ?>
@@ -197,6 +203,9 @@ if($user_id == $sakuhin['user_id'] && $_SESSION['bosyu_finish'] != NULL){
                   <?php echo mb_strimlen($row['sa_content'], 0, 50, "..."); ?>
                 </div>
               </div>
+            </div>
+            <div class="arrow">
+              <p><i class="fa fa-chevron-right" aria-hidden="true"></i></p>
             </div>
             <a class="sakuhin_link" href="<?php echo SITE_URL.'/sakuhin/s'.$row['sa_id'] ?>"></a>
           </li>
