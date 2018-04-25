@@ -50,6 +50,12 @@ if($_POST['sa_creator'] == "") {
 }
 
 $sa_twi_id = ltrim(html_escape($_POST['sa_twi_id']), '@,＠');
+
+$notice = 0;
+if($_POST['notice'] == 1){
+  $notice = 1;
+}
+
 $sa_content = nl2br(html_escape($_POST['sa_content']));
 // $image_path …画像表示用のパス
 
@@ -66,7 +72,7 @@ if($user_id == NULL){
 $_SESSION['bosyu_finish'] = $sa_title;
 
 // 作品の登録
-insert_sakuhin($dbh, $sa_title, $sa_creator, $sa_twi_id, $sa_content, $sa_image_path, $user_id);
+insert_sakuhin($dbh, $sa_title, $sa_creator, $sa_twi_id, $sa_content, $sa_image_path, $user_id, $notice);
 $sa_id = get_new_sa_id($dbh, $user_id);
 
 // 作品ページへ移動

@@ -134,11 +134,11 @@ function get_sa_random_id($dbh, $sa_id) {
 ///////////////////////////////////////////////////
 
 // 作品をDBに登録
-function insert_sakuhin($dbh, $sa_title, $sa_creator, $sa_twi_id, $sa_content, $sa_image_path, $user_id) {
+function insert_sakuhin($dbh, $sa_title, $sa_creator, $sa_twi_id, $sa_content, $sa_image_path, $user_id, $notice) {
   $date = date('Y-m-d H:i:s');
   try {
-    $sql = "INSERT INTO sakuhin (sa_title, sa_creator, sa_twi_id, sa_content, sa_image_path, user_id, sa_created)
-     VALUE (:sa_title, :sa_creator, :sa_twi_id, :sa_content, :sa_image_path, :user_id, '{$date}')";
+    $sql = "INSERT INTO sakuhin (sa_title, sa_creator, sa_twi_id, sa_content, sa_image_path, user_id, sa_created, notice)
+     VALUE (:sa_title, :sa_creator, :sa_twi_id, :sa_content, :sa_image_path, :user_id, '{$date}', :notice)";
     $stmt = $dbh -> prepare($sql);
     $stmt -> bindValue(':sa_title', $sa_title, PDO::PARAM_STR);
     $stmt -> bindValue(':sa_creator', $sa_creator, PDO::PARAM_STR);
@@ -146,6 +146,7 @@ function insert_sakuhin($dbh, $sa_title, $sa_creator, $sa_twi_id, $sa_content, $
     $stmt -> bindValue(':sa_content', $sa_content, PDO::PARAM_STR);
     $stmt -> bindValue(':sa_image_path', $sa_image_path, PDO::PARAM_STR);
     $stmt -> bindValue(':user_id', $user_id, PDO::PARAM_STR);
+    $stmt -> bindValue(':notice', $notice, PDO::PARAM_STR);
     $stmt -> execute();
   }catch (PDOException $e) {
     echo($e -> getMessage());
@@ -215,9 +216,9 @@ function get_sa_user_id($dbh, $sa_id){
 }
 
 // 作品の修正（画像あり）
-function update_sakuhin($dbh, $sa_id, $sa_title, $sa_creator, $sa_twi_id, $sa_content, $sa_image_path) {
+function update_sakuhin($dbh, $sa_id, $sa_title, $sa_creator, $sa_twi_id, $sa_content, $sa_image_path, $notice) {
   try {
-    $sql = "UPDATE sakuhin SET sa_title = :sa_title, sa_creator = :sa_creator, sa_twi_id = :sa_twi_id, sa_content = :sa_content, sa_image_path = :sa_image_path
+    $sql = "UPDATE sakuhin SET sa_title = :sa_title, sa_creator = :sa_creator, sa_twi_id = :sa_twi_id, sa_content = :sa_content, sa_image_path = :sa_image_path, notice = :notice
      WHERE sa_id = :sa_id";
     $stmt = $dbh -> prepare($sql);
     $stmt -> bindValue(':sa_id', $sa_id, PDO::PARAM_STR);
@@ -226,6 +227,7 @@ function update_sakuhin($dbh, $sa_id, $sa_title, $sa_creator, $sa_twi_id, $sa_co
     $stmt -> bindValue(':sa_twi_id', $sa_twi_id, PDO::PARAM_STR);
     $stmt -> bindValue(':sa_content', $sa_content, PDO::PARAM_STR);
     $stmt -> bindValue(':sa_image_path', $sa_image_path, PDO::PARAM_STR);
+    $stmt -> bindValue(':notice', $notice, PDO::PARAM_STR);
     $stmt -> execute();
   }catch (PDOException $e) {
     echo($e -> getMessage());
@@ -234,9 +236,9 @@ function update_sakuhin($dbh, $sa_id, $sa_title, $sa_creator, $sa_twi_id, $sa_co
 }
 
 // 作品の修正（画像なし）
-function update_sakuhin_noimage($dbh, $sa_id, $sa_title, $sa_creator, $sa_twi_id, $sa_content) {
+function update_sakuhin_noimage($dbh, $sa_id, $sa_title, $sa_creator, $sa_twi_id, $sa_content, $notice) {
   try {
-    $sql = "UPDATE sakuhin SET sa_title = :sa_title, sa_creator = :sa_creator, sa_twi_id = :sa_twi_id, sa_content = :sa_content
+    $sql = "UPDATE sakuhin SET sa_title = :sa_title, sa_creator = :sa_creator, sa_twi_id = :sa_twi_id, sa_content = :sa_content, notice = :notice
      WHERE sa_id = :sa_id";
     $stmt = $dbh -> prepare($sql);
     $stmt -> bindValue(':sa_id', $sa_id, PDO::PARAM_STR);
@@ -244,6 +246,7 @@ function update_sakuhin_noimage($dbh, $sa_id, $sa_title, $sa_creator, $sa_twi_id
     $stmt -> bindValue(':sa_creator', $sa_creator, PDO::PARAM_STR);
     $stmt -> bindValue(':sa_twi_id', $sa_twi_id, PDO::PARAM_STR);
     $stmt -> bindValue(':sa_content', $sa_content, PDO::PARAM_STR);
+    $stmt -> bindValue(':notice', $notice, PDO::PARAM_STR);
     $stmt -> execute();
   }catch (PDOException $e) {
     echo($e -> getMessage());

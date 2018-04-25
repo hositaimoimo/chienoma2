@@ -50,6 +50,12 @@ if($_POST['sa_creator'] == "") {
 }
 
 $sa_twi_id = ltrim(html_escape($_POST['sa_twi_id']), '@,＠');
+
+$notice = 0;
+if($_POST['notice'] == 1){
+  $notice = 1;
+}
+
 $sa_content = nl2br(html_escape($_POST['sa_content']));
 // $image_path …画像表示用のパス
 
@@ -64,7 +70,7 @@ if($img['name'] == '') {
   // 添付がなければ画像処理はスキップ
 
   // 作品の修正
-  update_sakuhin_noimage($dbh, $edit_sa_id, $sa_title, $sa_creator, $sa_twi_id, $sa_content);
+  update_sakuhin_noimage($dbh, $edit_sa_id, $sa_title, $sa_creator, $sa_twi_id, $sa_content, $notice);
 
 }else{
   // 画像の処理
@@ -80,7 +86,7 @@ if($img['name'] == '') {
   }
 
   // 作品の修正
-  update_sakuhin($dbh, $edit_sa_id, $sa_title, $sa_creator, $sa_twi_id, $sa_content, $sa_image_path);
+  update_sakuhin($dbh, $edit_sa_id, $sa_title, $sa_creator, $sa_twi_id, $sa_content, $sa_image_path, $notice);
 }
 
 // 作品ページへ移動

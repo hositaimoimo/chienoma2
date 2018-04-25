@@ -34,7 +34,11 @@ if($_SESSION['is_edit_mode'] == TRUE){
       <p class="bosyu_menu">Twitter ID（なくてもOK）</p>
       <small>募集主名にリンクが生成されます。</small>
       <p><input class="input_area num-input" type="text" name="sa_twi_id" placeholder="＠twitter_id" value="<?php echo $edit_sakuhin['sa_twi_id'] ?>"></p>
-
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="notice" value="1" <?php if($edit_sakuhin['notice'] == 1){echo 'checked';} ?>> 意見が寄せられた時に<a href="https://twitter.com/chienomanet" target="_blank">公式Twitter</a>からのメンション（通知）を受け取る
+        </label>
+      </div>
       <!-- 画像入力フォーム -->
       <p class="bosyu_menu">添付画像（なくてもOK）</p>
       <small>.pngまたは.jpgのみ。投稿後は最大600×600pxのjpg画像になります。</small>
@@ -95,7 +99,11 @@ if($_SESSION['is_edit_mode'] == TRUE){
       <p class="bosyu_menu">Twitter ID（なくてもOK）</p>
       <small>募集主名にリンクが生成されます。</small>
       <p><input class="input_area num-input" type="text" name="sa_twi_id" placeholder="＠twitter_id"></p>
-
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="notice" value="1"> 意見が寄せられた時に<a href="https://twitter.com/chienomanet" target="_blank">公式Twitter</a>からのメンション（通知）を受け取る
+        </label>
+      </div>
       <!-- 画像入力フォーム -->
       <p class="bosyu_menu">添付画像（なくてもOK）</p>
       <small>.pngまたは.jpgのみ。投稿後は最大600×600pxのjpg画像になります。</small>

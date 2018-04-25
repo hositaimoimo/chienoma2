@@ -5,6 +5,8 @@ if (!isset($_SESSION)) {
 
 require_once ( __DIR__ . '/functions.php');
 require_once ( __DIR__ . '/config.php');
+require_once ( __DIR__ . '/twitteroauth/autoload.php');
+use Abraham\TwitterOAuth\TwitterOAuth;
 
 $dbh = get_db_connect ();
 
@@ -46,6 +48,30 @@ if (isset($_POST['ka_hidden'])) {
 // 感想の登録
 insert_kansou($dbh, $sa_id, $user_id, $ka_comment, $ka_hidden);
 plus_ka_num($dbh, $sa_id);
+
+// 作品ユーザーへの通知
+$notice_sakuhin = get_sakuhin($dbh, $sa_id);
+if($notice_sakuhin['sa_twi_id'] != "" && $notice_sakuhin['notice'] == 1){
+  $oauth_access_token = ACCESS_TOKEN;
+  $oauth_access_token_secret = ACCESS_TOKEN_SECRET;
+  $consumer_key = CONSUMER_KEY;
+  $consumer_secret = CONSUMER_SECRET;
+  $connection = new TwitterOAuth($consumer_key,$consumer_secret,$oauth_access_token,$oauth_access_token_secret);
+
+  $m1 = mb_strimlen($notice_sakuhin['sa_title'], 0, 50, "...");
+  $m2 = mb_strimlen($ka_comment, 0, 50, "...");
+  if($ka_hidden == 1) {
+    $message = '@'.$notice_sakuhin['sa_twi_id'].' 『'.$m1."』に意見が届いています！\n―――※募集主のみ閲覧可"."\n".SITE_URL.'/'.$request_url;
+  } else {
+    $message = '@'.$notice_sakuhin['sa_twi_id'].' 『'.$m1."』に意見が届いています！\n――― ".$m2."\n".SITE_URL.'/'.$request_url;
+  }
+
+  $result = $connection->post(
+        "statuses/update",
+        array("status" => $message)
+  );
+}
+
 
 // リセット
 $_SESSION['now_sa_id'] = NULL;
